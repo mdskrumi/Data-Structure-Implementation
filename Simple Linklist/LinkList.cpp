@@ -65,6 +65,17 @@ void Insert(int num){
     temp->next = newNode;
 }
 
+void Delete(int pos){
+    Node *frontNode = Head->next;
+    Node *backNode = Head;
+    while(frontNode->next != NULL && pos--){
+        backNode= frontNode;
+        frontNode = frontNode->next;
+    }
+    backNode->next = frontNode->next;
+
+}
+
 void Insert(int num , int pos){
     Node *temp = Head;
     while(temp->next != NULL && pos--){
@@ -105,6 +116,17 @@ int main(){
         Insert(num , pos);
         Print();
     }
+
+    cout << Search(5) << nl;
+    cout << Search(10) << nl;
+    cout << Search(15) << nl;
+
+    Delete(3);
+    Print();
+    Delete(0);
+    Print();
+    Delete(7);
+    Print();
 
 return 0;
 }
