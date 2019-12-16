@@ -21,14 +21,25 @@
 #define     se                      second
 #define     sz(v)                   (int)(v).size()
 #define     REMOVE_ALL(str , c)     str.erase(remove(str.begin(), str.end(), c), str.end())
+#define     PIE                     acos(-1)
+#define     pline                   cout << nl
 
 using namespace std;
 
 inline int ini(){int n;cin >> n;return n;}
+inline int ini(string s){ cout << s; int n;cin >> n;return n;}
+
 inline ll inl(){ll n;cin >> n;return n;}
+inline ll inl(string s){ cout << s; ll n;cin >> n;return n;}
+
 inline double ind(){double n;cin >> n;return n;}
+inline double ind(string s){ cout << s; double n;cin >> n;return n;}
+
 inline string ins(){string n;cin >> n;return n;}
+inline string ins(string s){ cout << s;string n;cin >> n;return n;}
+
 inline string insl(){string n;getline(cin,n);return n;}
+inline string insl(string s){ cout << s;string n;getline(cin,n);return n;}
 
 inline int string_to_int(string s){int n;stringstream ss;ss << s;ss >> n;return n;}    // Same for double and long long
 inline string int_to_string(int n){string s;stringstream ss;ss << n;ss >> s;return s;} // Same for double and long long
@@ -44,15 +55,28 @@ struct Node{
 
 Node *Head;
 
-void Insert(int x){
+void Insert(int num){
     Node *temp = Head;
     while(temp->next != NULL){
         temp = temp->next;
     }
     Node *newNode = new Node();
-    newNode->data = x;
+    newNode->data = num;
     temp->next = newNode;
 }
+
+void Insert(int num , int pos){
+    Node *temp = Head;
+    while(temp->next != NULL && pos--){
+        temp = temp->next;
+    }
+    Node *newNode = new Node();
+    newNode->data = num;
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+
 void Print(){
     Node *temp = Head;
     cout << "My List : ";
@@ -62,12 +86,23 @@ void Print(){
     }
     cout << nl;
 }
+bool Search(int num){
+    Node *temp = Head;
+    while(temp->next != NULL){
+        temp = temp->next;
+        if(temp->data == num){
+            return 1;
+        }
+    }
+return 0;
+}
 int main(){
     Head = new Node();
     Head->next = NULL;
-    int n = ini();
+    int n = ini("Enter Number of Element: ");
     for(int i = 0 ; i < n ; i++){
-        Insert(ini());
+        int num = ini("Enter the Element: ") , pos = ini("Enter Position: ");
+        Insert(num , pos);
         Print();
     }
 
