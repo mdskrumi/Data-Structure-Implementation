@@ -6,14 +6,12 @@ using namespace std;
 #define IN_FILE     freopen("input.txt", "r", stdin);
 #define OUT_FILE    freopen("output.txt", "w", stdout);
 
-
 void USEFILE(bool yes){
     if(yes){
         IN_FILE;
         OUT_FILE;
     }
 }
-
 
 class Node{
   public:
@@ -126,7 +124,6 @@ class List{
             }
             Node *save = head;
             Node *prev = head;
-
             while(head != NULL){
                 if(head->data != n){
                     prev = head;
@@ -137,9 +134,7 @@ class List{
                     head = head->next;
                 }
             }
-
             head = save;
-
         }
         // Prints the list
         void printList(){
@@ -156,7 +151,6 @@ class List{
         }
 
 };
-
 
 int main(){
     BOLT;
@@ -185,14 +179,12 @@ int main(){
     myList->insert(1);myList->printList();
     myList->insert(17,3);myList->printList();
 
-
     cout << "SEARCH: "; myList->printList();
     cout << "Found at index: " << myList->search(31) << '\n';
     cout << "Found at index: " << myList->search(32) << '\n';
     cout << "Found at index: " << myList->search(17) << '\n';
     cout << "Found at index: " << myList->search(12) << '\n';
     cout << "Found at index: " << myList->search(3) << '\n';
-
 
     cout << "GET: "; myList->printList();
     cout << myList->get(2) << "\n";
@@ -201,7 +193,6 @@ int main(){
     cout << myList->get(10) << "\n";
     cout << myList->get(9) << "\n";
     cout << myList->get(91) << "\n";
-
 
     cout << "DELETE: "; myList->printList();
     myList->removeAt(0);myList->printList();
@@ -212,7 +203,6 @@ int main(){
     myList->removeAt(3);myList->printList();
     myList->removeAt(4);myList->printList();
     myList->removeAt(7);myList->printList();
-
 
     cout << "REMOVE: "; myList->printList();
     myList->remove(5);myList->printList();
