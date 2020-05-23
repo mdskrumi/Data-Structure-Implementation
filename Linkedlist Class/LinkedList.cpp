@@ -136,6 +136,24 @@ class List{
             }
             head = save;
         }
+
+        // Reverses the list
+        void reverse(){
+            Node *save = head;
+            Node *next = head->next;
+            if(head == NULL || head->next == NULL){
+                return;
+            }
+            head->next = NULL;
+            while(next!=NULL){          
+                Node* temp = next->next;
+                next->next = head;
+                head = next;
+                next = temp;
+            }
+        }
+
+
         // Prints the list
         void printList(){
             if(head== NULL){
@@ -199,8 +217,6 @@ int main(){
     myList->removeAt(0);myList->printList();
     myList->removeAt(5);myList->printList();
     myList->removeAt(51);myList->printList();
-    myList->removeAt(3);myList->printList();
-    myList->removeAt(3);myList->printList();
     myList->removeAt(4);myList->printList();
     myList->removeAt(7);myList->printList();
 
@@ -209,6 +225,9 @@ int main(){
     myList->remove(51);myList->printList();
     myList->remove(1);myList->printList();
     myList->remove(2);myList->printList();
+
+    cout << "REVERSE: "; myList->printList();
+    myList->reverse();myList->printList();
 
     return 0;
 }
